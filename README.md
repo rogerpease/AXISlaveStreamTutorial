@@ -41,9 +41,9 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 1. Click "Create Block Design" and make a new Block design.  
 1. Add the AXISlaveStreamTutorial directory as an IP Repository. It should find one directory.  
 1. Add the following:
-2. ZYNQ 7000 
-2. "AXI Direct Memory Access" 
-2. AXISlaveStreamTutorialIP 
+- ZYNQ 7000 
+- "AXI Direct Memory Access" 
+- AXISlaveStreamTutorialIP 
 1. Run "Run Block Automation" (should be an option in a ribbon at the top of the Block Diagram). 
 1. Update the ZYNQ 7000 to include a Slave High Performance Port. 
 1. Update the AXI Direct Memory Access to:
