@@ -14,7 +14,7 @@ overlay.axi_dma_0.sendchannel.transfer(output_buffer)
 overlay.axi_dma_0.sendchannel.wait() 
 overlay.axi_dma_0.sendchannel.stop() 
 
-total = overlay.AXISlaveStreamTutorial_0.read(0x04)
+total = overlay.AXISlaveStreamTutori_0.read(0x04)
 
 #
 # This should be the total of all the values written. 
