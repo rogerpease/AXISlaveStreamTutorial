@@ -69,5 +69,4 @@ There is a [SendStream.py](http://github.com/rogerpease/AXISlaveStreamTutorial/S
 1. Those numbers are summed together and the result is placed in the Register File. 
 1. The total is read back the sum through the register file. 
 
-The copy steps are captured for automation in the 
-[PushFiles.py](http://github.com/rogerpease/AXISlaveStreamTutorial/PushFiles.py) script. Be sure to update the IP address of your board.   
+The copy steps are captured for automation in the [PushFiles.py](http://github.com/rogerpease/AXISlaveStreamTutorial/PushFiles.py) script. Be sure to update the IP address of your board.   
