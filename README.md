@@ -40,7 +40,9 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 
 ### Step 3) Make an FPGA Image and instance the IP 
 
-1. Start Vivado and Create a new project (I call mine FPGAImageProject). 
+1. Start Vivado and Create a new RTL project (I call mine FPGAImageProject). 
+	- You don't need to add RTL source but be sure to select your board from the board/part menu.
+1. Click "Project Manager"->"Settings"->"IP" and add your IP directory from the prior step as a IP Repository. It should find the IP even in a subdirectory.
 1. Click "Create Block Design" and make a new Block design.  
 1. Add the AXISlaveStreamTutorial directory as an IP Repository. It should find one directory.  
 1. Add the following:
@@ -48,13 +50,21 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 	1. "AXI Direct Memory Access" 
 	1. AXISlaveStreamTutorialIP 
 1. Run "Run Block Automation" (should be an option in a ribbon at the top of the Block Diagram). 
-1. Update the ZYNQ 7000 to include a Slave High Performance Port. 
-1. Update the AXI Direct Memory Access to:
+1. Double-Click on the ZYNQ 7000:
+ 	1. Select "PS-PL Configuration"->"HP Slave AXI Interface"->"S AXI HP0 interface" to include a Slave High Performance Port. 
+     	1. If you select "Run Block Automation" you may need to reselect this.
+1. Double-Click on the AXI Direct Memory Access Peripheral to:
 	1. Remove the Write Channel 
 	1. Turn off Scatter-Gather 
-1. Run "Run Connection Automation" 
+1. Run "Run Connection Automation" and select "All Automation". 
+	1. You may need to hand draw a connection from axi_dma_0/M_AXIS_MM2S to AXISlaveStreamTutorial
+	1.. It should look like this: !["Overlay Image'](pics/FPGABlock.png) 
 1. Go to the "FPGA Image" sources area and click "Generate HDL Wrapper". The tool that makes the netlists can't read a Block Diagram. 
+1. Make sure:
+
 1. Run "Generate Bitstream" and wait for the bitstream to generate. 
+
+The image should look like: 
 
 You should find a bit file and hwh file in your directory (you may need to do a find for files ending in those extensions).
 
