@@ -57,15 +57,14 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 	1. Remove the Write Channel 
 	1. Turn off Scatter-Gather 
 1. Run "Run Connection Automation" and select "All Automation". 
-	1. You may need to hand draw a connection from axi_dma_0/M_AXIS_MM2S to AXISlaveStreamTutorial
-	1.. It should look like this: !["Overlay Image"](pics/FPGABlock.png) 
+	1. You may need to hand draw a connection from axi_dma_0/M_AXIS_MM2S to AXISlaveStreamTutorial/slavestream.
+	1. It should look like this: !["Overlay Image"](pics/FPGABlock.png) 
 1. Go to the "FPGA Image" sources area and click "Generate HDL Wrapper". The tool that makes the netlists can't read a Block Diagram. 
-	1. It should look like this: !["HDL Wrapper"](pics/CreateHDLWrapper.png) 
+	1. !["HDL Wrapper"](pics/CreateHDLWrapper.png) 
 1. Make sure:
-
+	1. The AXI Direct Memory Access M_AXIS_MM2S connects to the AXISlaveStreamTutorial IP slavestream interface. This is what writes the stream data.   
+	1. The AXI Slave Tutorial IP has all its resets and clocks connected. They can be connected to the other resets/clocks (respectively).  
 1. Run "Generate Bitstream" and wait for the bitstream to generate. 
-
-The image should look like: 
 
 You should find a bit file and hwh file in your directory (you may need to do a find for files ending in those extensions).
 
