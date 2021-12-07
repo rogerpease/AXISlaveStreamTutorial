@@ -58,8 +58,9 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 	1. Turn off Scatter-Gather 
 1. Run "Run Connection Automation" and select "All Automation". 
 	1. You may need to hand draw a connection from axi_dma_0/M_AXIS_MM2S to AXISlaveStreamTutorial
-	1.. It should look like this: !["Overlay Image'](pics/FPGABlock.png) 
+	1.. It should look like this: !["Overlay Image"](pics/FPGABlock.png) 
 1. Go to the "FPGA Image" sources area and click "Generate HDL Wrapper". The tool that makes the netlists can't read a Block Diagram. 
+	1. It should look like this: !["HDL Wrapper"](pics/CreateHDLWrapper.png) 
 1. Make sure:
 
 1. Run "Generate Bitstream" and wait for the bitstream to generate. 
