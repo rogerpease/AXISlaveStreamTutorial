@@ -1,6 +1,5 @@
 # AXISlaveStreamTutorial
 
-
 ## Purpose
 
 This tutorial is meant for Verilog programmers who want to use the Xilinx ZYNQ 7000 to stream through an AXI Slave Interface. 
@@ -19,14 +18,16 @@ In this case I took verilog from the AXI Peripherals and edited it to build a si
 There are three modules:
 
 * [TopLevelModule](http://github.com/rogerpease/AXISlaveStreamTutorial/tree/main/Verilog/module/AXISlaveStreamTutorialIP.v  "Top Level")
-* [SlaveStream](http://github.com/rogerpease/AXISlaveStreamTutorial/tree/main/Verilog/modules/AXISlaveStreamTutorialIP_SlaveStream.v) which takes in an AXI stream and accumulates data. 
+* [SlaveStream](http://github.com/rogerpease/AXISlaveStreamTutorial/tree/main/Verilog/modules/AXISlaveStreamTutorialIP_SlaveStream.v) which takes in an AXI stream and accumulates the streamed in data. 
 * [RegisterFile](http://github.com/rogerpease/AXISlaveStreamTutorial/tree/main/Verilog/modules/AXISlaveStreamTutorialIP_SlaveRegisterFile.v) which interfaces to the CPU to return summed results. The only changes here were a capture of the total Value and output of control Register.   
+
+There are Verilator scripts for my own testing purposes. 
 
 ### Step 2) Package IP
 
 The simplest way to package the IP through the gui is:
 
-1. git clone http://github.com/rogerpease/AXISlaveStreamTutorial 
+1. *git clone http://github.com/rogerpease/AXISlaveStreamTutorial*
 1. cd AXISlaveStreamTutorial 
 1. Start Vivado and Create a new project. Call it whatever you want and you can ignore the steps about adding IP/selecting parts/boards. 
 1. Tools->Create and Package New IP and select "Package a Specific Directory". Click Next.
@@ -67,9 +68,8 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 		1. axi_mem_interconn/M00_AXI ties to the processing system/S_AXI_HP0.
                 1. This is how the DMA fetches processor memory to feed to the stream interface. If the S_AXI_HP0 interface is missing you missed the "S AXI HP0 interface" option or it was undone by the Block Automation.
 	1. The AXI Interconnect ps7_0_axi_periph:
-		1. axi_dma_0/M_AXI_M2SS ties to axi_mem_interconn/S00_AXI
-		1. axi_mem_interconn/M00_AXI ties to the processing system/S_AXI_HP0.
-                1. This is how the DMA fetches processor memory to feed to the stream interface. 
+     		1. There should be connections to both peripherals.  
+		1. This is how the CPU communicates with the peripherals (to configure/read registers/etc). 
 1. Go to the "FPGA Image" sources area, right-click and select "Generate HDL Wrapper". The tool that makes the netlists can't read a Block Diagram. 
 	1. !["HDL Wrapper"](pics/CreateHDLWrapper.png) 
 1. Run "Generate Bitstream" and wait for the bitstream to generate. This may take 5 minutes or so. 
