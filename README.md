@@ -28,10 +28,13 @@ The simplest way to package the IP through the gui is:
 
 1. git clone http://github.com/rogerpease/AXISlaveStreamTutorial 
 1. cd AXISlaveStreamTutorial 
-1. Start Vivado and Create a new project (call it whatever you want). 
-1. Tools->Create and Package New IP
-1. Select the AXISlaveStreamTutorial directory 
-1. It should figure out the AXI interfaces. All you should need to do is fill in the names of the IP and User and click 'Package IP'. 
+1. Start Vivado and Create a new project. Call it whatever you want and you can ignore the steps about adding IP/selecting parts/boards. 
+1. Tools->Create and Package New IP and select "Package a Specific Directory". Click Next.
+1. Select the AXISlaveStreamTutorial directory and Click Next.
+1. Enter a project name and click next. 
+1. It should figure out the AXI interfaces and the hierarchy.  All you should need to do is:
+	1. Click "File Groups" in the Package IP window. !["Merge Changes from File Groups Wizard"](pics/FileGroups.png) 
+        1. fill in the names of the IP and User and click 'Package IP'. 
 
 These steps are captured for automation in the [RunPackageIP.py](http://github.com/rogerpease/AXISlaveStreamTutorial/RunPackageIP.py) script.  
 
@@ -41,19 +44,19 @@ These steps are captured for automation in the [RunPackageIP.py](http://github.c
 1. Click "Create Block Design" and make a new Block design.  
 1. Add the AXISlaveStreamTutorial directory as an IP Repository. It should find one directory.  
 1. Add the following:
-- ZYNQ 7000 
-- "AXI Direct Memory Access" 
-- AXISlaveStreamTutorialIP 
+	1. ZYNQ 7000 
+	1. "AXI Direct Memory Access" 
+	1. AXISlaveStreamTutorialIP 
 1. Run "Run Block Automation" (should be an option in a ribbon at the top of the Block Diagram). 
 1. Update the ZYNQ 7000 to include a Slave High Performance Port. 
 1. Update the AXI Direct Memory Access to:
-2. Remove the Write Channel 
-2. Turn off Scatter-Gather 
+	1. Remove the Write Channel 
+	1. Turn off Scatter-Gather 
 1. Run "Run Connection Automation" 
 1. Go to the "FPGA Image" sources area and click "Generate HDL Wrapper". The tool that makes the netlists can't read a Block Diagram. 
-1. Run "Generate Bitstream"
+1. Run "Generate Bitstream" and wait for the bitstream to generate. 
 
-You should find a .bit file and .hwh file in your directory  
+You should find a bit file and hwh file in your directory (you may need to do a find for files ending in those extensions).
 
 These steps are captured for automation in the [RunMakeImage.py](http://github.com/rogerpease/AXISlaveStreamTutorial/RunMakeImage.py) script.  
 
@@ -67,4 +70,4 @@ There is a [SendStream.py](http://github.com/rogerpease/AXISlaveStreamTutorial/S
 1. The total is read back the sum through the register file. 
 
 The copy steps are captured for automation in the 
-[PushFiles.py](http://github.com/rogerpease/AXISlaveStreamTutorial/PushFiles.py) script.  
+[PushFiles.py](http://github.com/rogerpease/AXISlaveStreamTutorial/PushFiles.py) script. Be sure to update the IP address of your board.   
