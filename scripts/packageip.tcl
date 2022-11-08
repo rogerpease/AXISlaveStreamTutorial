@@ -1,3 +1,4 @@
+
 create_project project_1 ./project_1 -part xc7k70tfbv676-1
 ipx::infer_core -vendor user.org -library user -taxonomy /UserIP ./Verilog/module
 ipx::edit_ip_in_project -upgrade true -name edit_ip_project -directory ./project_1/project_1.tmp ./Verilog/module/component.xml

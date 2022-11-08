@@ -9,12 +9,14 @@
 # Log file: /home/rpease/AXISlaveStreamTutorial/vivado.log
 # Journal file: /home/rpease/AXISlaveStreamTutorial/vivado.jou
 #-----------------------------------------------------------
-create_project FPGAImageProject ./AXISlaveStreamTutorial/FPGAImageProject -part xc7z020clg400-1
+
+set_param board.repoPaths /home/rpease/.Xilinx/Vivado/2022.1/xhub/board_store/xilinx_board_store
+create_project FPGAImageProject ./FPGAImageProject -part xc7z020clg400-1
 set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
-create_bd_design "FPGABlockDesign"
-update_compile_order -fileset sources_1
 set_property  ip_repo_paths  . [current_project]
 update_ip_catalog
+create_bd_design "FPGABlockDesign"
+update_compile_order -fileset sources_1
 startgroup
 create_bd_cell -type ip -vlnv user.org:user:AXISlaveStreamTutorialIP:1.0 AXISlaveStreamTutori_0
 endgroup
